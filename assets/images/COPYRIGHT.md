@@ -1,0 +1,2 @@
+# Nota de Copyright
+As imagens desta pasta são de uso gratuito e foram obtidas do site [Pexels](https://www.pexels.com/pt-br/procurar/chocolate/). Os direitos das imagens pertencem a seus respectivos proprietários e seu uso pela Zipper se restringe a esse desafio, sem outros fins comerciais.
