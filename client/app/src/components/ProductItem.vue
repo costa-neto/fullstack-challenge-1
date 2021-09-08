@@ -13,19 +13,21 @@
             cols="6"
           >
             <v-card
-              class="my-auto"
-              dark
+              class="my-auto w-100"
+              cols="12"
             >
-              <div class="d-flex flex-no-wrap justify-space-between">
                 <div>
                   
-                  <v-card-title
-                    class="text-h5"
-                    v-text="productDetails.shortDescription"
-                  ></v-card-title>
+                  <h1
+                    class="display-2 font-weight-bold mb-3"
+                  >{{productDetails.shortDescription}}</h1>
+                  <div class="mx-lg-auto">{{productDetails.description}}</div>
   
-                  <v-card-subtitle v-text="productDetails.description"></v-card-subtitle>
-  
+                  <v-chip
+                    color="purple"
+                    outlined
+                    pill
+                  >{{productDetails.category}}</v-chip>
                   <v-card-actions>
                     <v-btn
                       class="ml-2 mt-5"
@@ -39,7 +41,6 @@
                 </div>
   
                 
-              </div>
             </v-card>
           </v-col>
         </v-row>
