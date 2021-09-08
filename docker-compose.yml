@@ -1,0 +1,37 @@
+version: "3"
+
+services:
+  client:
+    build: ./client/app
+    ports:
+      - 8080:8080
+    volumes:
+      - ./client/app:/data
+      - '/client/app/node_modules'
+    environment:
+      - API_URL=http://localhost:8081/
+      - CHOKIDAR_USEPOLLING=true
+
+  server:
+    build: ./server
+    ports:
+      - 8081:8081
+    volumes:
+      - ./server:/data
+    depends_on: 
+      - server-database
+    environment:
+      - DATABASE_URL=server-database:27017
+    
+  server-database:
+    image: mongo
+    restart: always
+    environment:
+            MONGO_INITDB_DATABASE: products_db
+    ports:
+      - 27017:27017
+    volumes:
+        - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+        - ./db:/data/db
+
+    
