@@ -19,3 +19,19 @@ Desafio para candidatos a desenvolvedor fullstack: página de produtos e página
 ## **Recursos**
 - Arquivo JSON com dados de produtos na pasta `assets`.
 - Imagens dos produtos na pasta `assets/images`.
+
+### 📋 Pré-requisitos
+
+```
+Docker
+Docker Compose
+```
+
+### 🔧 Instalação
+```
+Verifique se o arquivo  "server/docker/entrypoint.sh" está configurado para LF, como explicado aqui:
+https://stackoverflow.com/a/52665687/10256655
+
+Através de um terminal, acesse a raiz do projeto e rode os comandos "docker-compose build" e "docker-compose build".
+Após o docker construir as imagens e subir os servidores, o app pode ser acessado em "localhost:8080" e o back-end em "localhost:8081".
+```

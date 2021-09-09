@@ -2,6 +2,11 @@
 
 > Full Stack Challenge
 
+
+## As interfaces foram inspiradas nos exemplos encontrados nestes dois sites
+
+https://vuetifyjs.com/en/resources/themes/
+https://freefrontend.com/css-lists/
 ## Build Setup
 
 ``` bash
