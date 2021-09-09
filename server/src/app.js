@@ -23,7 +23,6 @@ app.use(
   }))
   var DATABASE_URL = process.env.DATABASE_URL || 'http://localhost'
   const options = { useNewUrlParser: true, useUnifiedTopology: true }
-  console.log(DATABASE_URL);
   mongoose  
   .connect(`mongodb://${DATABASE_URL}/products_db`)
   .then(() => app.listen((process.env.PORT || 8081), console.log("Server is running")))

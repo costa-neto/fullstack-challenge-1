@@ -9,7 +9,7 @@
           />
         </v-flex>
 
-        <v-flex xs12 md6 align-content-space-between layout :pa-5="$vuetify.breakpoint.smAndDown" wrap>
+        <v-flex xs12 md6 my-auto align-content-space-between fill-height layout :pa-5="$vuetify.breakpoint.smAndDown" wrap>
           <v-layout align-center justify-center >
             <v-flex xs10 md >
               <h3 class="display-2 v-heading mb-3 font-weight-light">{{productDetails.shortDescription}}</h3>
@@ -61,9 +61,6 @@ import { PRODUCT_DETAILS_QUERY } from '../constants/graphql';
         getFilePath(imageName){
           return require(`@/assets/images/${imageName}`);
         }
-    },
-    mounted(){
-      console.log(this.productId)
     },
     apollo: {
       productDetails: {
