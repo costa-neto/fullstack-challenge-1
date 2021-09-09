@@ -1,51 +1,46 @@
 <template>
-  <v-card
-      class="mx-auto"
-    >
-  
-      <v-container>
-        <v-row dense>
-          <v-col cols="6">
-            <v-img :src="getFilePath(productDetails.image)"></v-img>
-          </v-col>
-  
-          <v-col
-            cols="6"
-          >
-            <v-card
-              class="my-auto w-100"
-              cols="12"
-            >
-                <div>
-                  
-                  <h1
-                    class="display-2 font-weight-bold mb-3"
-                  >{{productDetails.shortDescription}}</h1>
-                  <div class="mx-lg-auto">{{productDetails.description}}</div>
-  
-                  <v-chip
-                    color="purple"
-                    outlined
-                    pill
-                  >{{productDetails.category}}</v-chip>
-                  <v-card-actions>
-                    <v-btn
-                      class="ml-2 mt-5"
-                      outlined
-                      rounded
-                      small
+  <v-card class="mx-auto">
+    <section id="welcome" class="hide-overflow">
+      <v-layout>
+        <v-flex hidden-sm-and-down md6>
+          <v-img
+            :src="getFilePath(productDetails.image)"
+            height="100vh"
+          />
+        </v-flex>
+
+        <v-flex xs12 md6 align-content-space-between layout :pa-5="$vuetify.breakpoint.smAndDown" wrap>
+          <v-layout align-center justify-center >
+            <v-flex xs10 md >
+              <h3 class="display-2 v-heading mb-3 font-weight-light">{{productDetails.shortDescription}}</h3>
+              <p class="title font-weight-light" style="line-height: 1.7 !important; ">
+                {{productDetails.description}}
+              </p>
+              <div class="my-4 display-1 v-heading mb-3 font-weight-light">
+                $ • {{productDetails.price}}
+              </div>
+              <v-chip color="purple" outlined pill >{{productDetails.category}}</v-chip>
+                <v-btn @click="bought = true" class="mx-2" fab dark large color="purple">
+                  <v-icon dark>
+                    mdi-cart
+                  </v-icon>
+                </v-btn>
+                <v-snackbar v-model="bought">
+                  Parabéns por comprar um {{productDetails.shortDescription}}
+
+                  <template v-slot:action="{ attrs }">
+                    <v-btn color="pink" text v-bind="attrs" @click="bought = false"
                     >
-                      COMPRAR
+                      Fechar
                     </v-btn>
-                  </v-card-actions>
-                </div>
-  
-                
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-card>
+                  </template>
+                </v-snackbar>
+            </v-flex>
+          </v-layout>
+        </v-flex>
+      </v-layout>
+    </section>
+  </v-card>
 </template>
 
 <script>
@@ -55,7 +50,8 @@ import { PRODUCT_DETAILS_QUERY } from '../constants/graphql';
     data () {
       return {
         productDetails: {},
-        productId: this.$route.params.id
+        productId: this.$route.params.id,
+        bought: false
       }
     },
     computed: {

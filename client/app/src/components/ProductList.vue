@@ -1,32 +1,26 @@
 <template>
-  <v-card
-    class="mx-auto my-0 product"
-  >
-    <header>
-      <h1 class="product__title"><span class="product__title--top">FULL RESTAURANT</span><span class="product__title--bottom">products</span></h1>
-    </header>
-    <v-container align="center" fluid>
-      <v-row dense>
-        <v-col
-          v-for="product in products"
-          :key="product.id"
-          :cols="12"
-        >
-          <v-card @click="viewProduct(product.id)" elevation="10" shaped> 
-             <v-article class="product__item">
-               <v-avatar>
-              <v-img :src="getFilePath(product.image)" class="white--text align-end"
-              gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-              height="200px" :alt="product.shortDescription"></v-img>
-              </v-avatar>
-              <span class="product__description">{{product.shortDescription}}</span>
-              <span class="product__price"><span>$</span>{{product.price}}</span>
-            </v-article>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-container>
-  </v-card>
+  	<v-card class="mx-auto my-0 product">
+		<header>
+			<h1 class="product__title"><span class="product__title--top">FULL RESTAURANT</span><span class="product__title--bottom">products</span></h1>
+		</header>
+		<v-container align="center" fluid>
+			<v-row dense>
+				<v-col v-for="product in products" :key="product.id" :cols="12">
+					<v-card @click="viewProduct(product.id)" elevation="10" shaped> 
+						<v-article class="product__item">
+							<v-avatar size="100">
+									<v-img :src="getFilePath(product.image)" class="white--text align-end"
+									gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+									:alt="product.shortDescription"></v-img>
+							</v-avatar>
+							<span class="product__description">{{product.shortDescription}}</span>
+							<span class="product__price"><span>$</span>{{product.price}}</span>
+						</v-article>
+					</v-card>
+				</v-col>
+			</v-row>
+		</v-container>
+	</v-card>
 </template>
 
 <script>
@@ -39,20 +33,6 @@
         products: [],
         loading: 0
       }
-    },
-    computed: {
-        productsByCategory(){
-            function groupBy(xs, prop) {
-                var grouped = {};
-                for (var i=0; i<xs.length; i++) {
-                    var p = xs[i][prop];
-                    if (!grouped[p]) { grouped[p] = []; }
-                    grouped[p].push(xs[i]);
-                }
-                return grouped;
-            }
-            return groupBy(this.products, "category");
-        }
     },
     methods: {
         viewProduct(productId){
@@ -71,7 +51,7 @@
 </script>
 <style scoped>
 .product {
-	 max-width: 600px;
+	 max-width: 650px;
 	 width: 100%;
 	 border-radius: 12px;
 }
